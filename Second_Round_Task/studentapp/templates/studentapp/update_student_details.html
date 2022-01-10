@@ -1,0 +1,23 @@
+{% extends 'studentapp/base.html' %}
+
+{% block head_block %}
+{%load crispy_forms_tags%}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css\login.css' %}">  
+{% endblock  %}
+
+{% block title_block %}
+ <title>Update_Student</title>
+{% endblock %}
+
+{% block body_block %}
+{% include 'studentapp/navbar.html' %} 
+<div class="container">
+    <h1>Update Details</h1><hr>
+    <form action="" method="POST">{% csrf_token %}
+        {{form1 | crispy }}
+        {{form2 | crispy }}
+        <center><button class="btn btn-primary btn-lg" type="submit">UPDATE</button></center>
+    </form>
+</div>
+{% endblock %}

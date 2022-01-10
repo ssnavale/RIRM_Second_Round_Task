@@ -1,0 +1,23 @@
+{% extends 'studentapp/base.html' %}
+
+{% block head_block %}
+{%load crispy_forms_tags%}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css\login.css' %}">  
+{% endblock  %}
+
+{% block title_block %}
+<title>Login</title>
+{% endblock %}
+
+{% block body_block %}
+<div class="container"><br><br>
+    <h1>Login Here</h1><hr>
+    <form action="" method="POST">{% csrf_token %}
+        {{form | crispy }}
+        <center><button class="btn btn-primary btn-lg" type="submit">Login</button></center>
+    </form>
+    <h4>Create New Account &nbsp;<a href="{% url 'signup' %}">SignUp Here</a></h4>
+    <br>
+</div>
+{% endblock %}

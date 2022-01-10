@@ -1,0 +1,28 @@
+{% extends 'studentapp/base.html' %}
+
+{% block head_block %}
+{%load crispy_forms_tags%}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css\login.css' %}">  
+{% endblock  %}
+
+{% block title_block %}
+<title>Delete</title>
+{% endblock %}
+
+{% block body_block %}
+{% include 'studentapp/navbar.html' %}
+<br> <br>
+    <div class="container">
+        <h2>Are you sure you want to delete the Record of Student "{{info.name}}"? </h2> <br>
+        <hr>
+        <div class="container">
+            <form  method="POST">{% csrf_token %}
+            <input class="btn btn-danger " type="submit" value="Yes I'm Sure">
+            </form> <br> <br>
+            
+            <a class="btn btn-primary " href="{% url 'display' info.roll_no %}" role="button">No Take Me Back </a>
+        
+        </div>
+    </div>
+{% endblock %}

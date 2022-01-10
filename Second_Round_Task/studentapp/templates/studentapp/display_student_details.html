@@ -1,0 +1,31 @@
+{% extends 'studentapp/base.html' %}
+
+{% block head_block %}
+{%load crispy_forms_tags%}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css\display.css' %}">  
+{% endblock  %}
+
+{% block title_block %}
+ <title>Display_Student</title>
+{% endblock %}
+
+{% block body_block %}
+{% include 'studentapp/navbar.html' %}
+<div class="container">
+ <h2>Student Details</h2><hr>
+ <h4>Student Name: {{info.name}}</h4>
+ <h4>Student Roll Number: {{info.roll_no}}</h4>
+ <h4>Student Class: {{info.clas}}</h4>
+ <h4>Student School: {{info.school}}</h4>
+ <h4>Student Mobile: {{info.mobile}}</h4>
+ <h4>Student Address: {{info.address}}</h4><br>
+ <h3>Student Academic Details</h3><hr>
+ <h4>Math Marks: {{acad.math}}</h4>
+ <h4>Physics  Marks: {{acad.physics}}</h4>
+ <h4>Chemistry  Marks: {{acad.chemistry}}</h4>
+ <h4>Biology  Marks: {{acad.biology}}</h4>
+ <h4>English  Marks: {{acad.english}}</h4><br>
+ <span><a class="btn btn-warning btn-lg" href="{% url 'update' info.roll_no %}" role="button">UPDATE</a> &nbsp;  <a class="btn btn-danger btn-lg" href="{% url 'delete' info.roll_no %}" role="button">DELETE<a></span>
+</div>
+{% endblock %}

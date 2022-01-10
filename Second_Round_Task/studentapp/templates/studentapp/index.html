@@ -1,0 +1,59 @@
+{% extends 'studentapp/base.html' %}
+
+{% block head_block %}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css\index.css' %}">  
+{% endblock  %}
+
+{% block title_block %}
+<title>Index</title>
+{% endblock %}
+
+{% block body_block %}
+{% include 'studentapp/navbar.html' %}
+  <h1>STUDENT MANAGEMENT SYSTEM</h1>
+  <br>
+  <nav>
+      <form class="form-inline" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Name" aria-label="Search" name="search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+  </nav>
+
+  <div class="container"><br>
+    <div class="container">
+      {% if messages %}
+      {% for message in messages %}
+      <h2 {% if message.tags %} class = '{{message.tags}}' {% endif %}> {{ message }}</h2> 
+      {% endfor %}
+      {% endif %}
+      </div>
+      {% if students %}
+      <h3>STUDENT'S LIST</h3><br>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Class</th>
+              <th scope="col">School</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Address</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for student in students %}
+            <tr>
+              <td><a href="{% url 'display' student.roll_no %}" >{{student.name | upper}}</a></td>
+              <td>{{student.clas}}</td>
+              <td>{{student.school}}</td>
+              <td>{{student.mobile}}</td>
+              <td>{{student.address | truncatewords:3}}</td>
+              <td><a class="btn btn-warning" href="{% url 'update' student.roll_no %}" role="button">UPDATE</a> &nbsp;  <a class="btn btn-danger" href="{% url 'delete' student.roll_no %}" role="button">DELETE<a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+  </div>
+{% endblock  %}

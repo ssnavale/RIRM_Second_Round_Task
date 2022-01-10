@@ -1,0 +1,28 @@
+#navul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    background-color:green;
+    
+  }
+  
+#navli {
+    float: left;
+  }
+#navlogout {
+    float: right;
+  }
+  
+#navli a {
+    display: block;
+    padding: 12px;
+    background-color:green;
+    color: ivory;
+  }
+#navlogout a {
+    display: block;
+    padding: 12px;
+    background-color:green;
+    color: ivory;
+  }
